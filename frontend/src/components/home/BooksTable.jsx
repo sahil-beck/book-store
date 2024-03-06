@@ -1,0 +1,54 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { AiOutlineEdit } from 'react-icons/ai';
+import { BsInfoCircle } from 'react-icons/bs';
+import { MdOutlineDelete } from 'react-icons/md';
+
+const BooksTable = ({books}) => {
+  return (
+    <>
+        <table className='w-full border-separate border-spacing-2'>
+            <thead className='text-lg text-gray-400'>
+                <tr>
+                    <th className='border border-slate-600 rounded-md'>S/N</th>
+                    <th className='border border-slate-600 rounded-md'>Title</th>
+                    <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
+                    <th className='border border-slate-600 rounded-md max-md:hidden'>Publish Year</th>
+                    <th className='border border-slate-600 rounded-md'>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {books.map((book, index) => (
+                    <tr key={book._id} className='h-8'>
+                        <td className='border border-slate-700 rounded-md text-center'>{index + 1}</td>
+                        <td className='border border-slate-700 rounded-md text-center'>{book.title}</td>
+                        <td className='border border-slate-700 rounded-md text-center max-md:hidden'>{book.author}</td>
+                        <td className='border border-slate-700 rounded-md text-center max-md:hidden'>{book.publishYear}</td>
+                        <td className='border border-slate-700 rounded-md text-center'>
+                            <div className='flex justify-between'>
+                                <div className='hover:brightness-150 bright hover:bg-stone-950/30 px-1 rounded-md'>
+                                    <Link to={`/books/details/${book._id}`}>
+                                        <BsInfoCircle className='text-2xl text-green-800' />
+                                    </Link>
+                                </div>
+                                <div className='hover:brightness-150 hover:bg-stone-950/30 px-1 rounded-md'>
+                                    <Link to={`/books/edit/${book._id}`}>
+                                        <AiOutlineEdit className='text-2xl text-yellow-600' />
+                                    </Link>
+                                </div>
+                                <div className='hover:brightness-150 hover:bg-stone-950/30 px-1 rounded-md'>
+                                    <Link to={`/books/delete/${book._id}`}>
+                                        <MdOutlineDelete className='text-2xl text-red-600' />
+                                    </Link>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </>
+  )
+}
+
+export default BooksTable;
