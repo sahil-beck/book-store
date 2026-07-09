@@ -12,7 +12,7 @@ const mongoDBURL = process.env.MONGODB_URL;
 
 app.use(cors({ 
     origin: process.env.FRONTEND_URL,
-    methods: ['GET', 'POST', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type']
 })); 
 app.use(express.json());
