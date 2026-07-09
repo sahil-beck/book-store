@@ -1,15 +1,18 @@
 import express from "express";
-import { PORT, mongoDBURL } from "./config.js";
+import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bookRoute from "./routes/bookRoute.js";
 import cors from "cors";
 
 const app = express();
+dotenv.config();
 
-// app.use(cors());
+const PORT = process.env.PORT;
+const mongoDBURL = process.env.MONGODB_URL;
+
 app.use(cors({ 
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: process.env.FRONTEND_URL,
+    methods: ['GET', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type']
 })); 
 app.use(express.json());
@@ -17,7 +20,7 @@ app.use('/books', bookRoute);
 
 app.get('/', (request, response) => {
     console.log(request);
-    return response.status(234).send("http get request");
+    return response.status(200).send("BookStore API");
 });
 
 mongoose

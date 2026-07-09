@@ -4,6 +4,7 @@ import BackButton from '../components/BackButton';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import { API_URL } from '../config';
 
 const EditBook = () => {
   const [title, setTitle] = useState('');
@@ -16,7 +17,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios 
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`${API_URL}/books/${id}`)
       .then((response) => {
         setTitle(response.data.data.title);
         setAuthor(response.data.data.author);

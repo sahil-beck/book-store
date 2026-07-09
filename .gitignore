@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Node modules
+backend/node_modules/
+frontend/node_modules/
+
+# Environment / secrets
+backend/.env
+frontend/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build output
+frontend/dist/
+
+# Optional
+# .vscode/
+# .idea/

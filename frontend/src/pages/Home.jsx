@@ -6,6 +6,7 @@ import { MdOutlineAddBox } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 import ShowTypeContext from '../context/ShowTypeContext';
+import { API_URL } from '../config';
 
 const Home = () => {
   const [books, setBooks] = useState([]);  
@@ -14,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-        .get('http://localhost:5555/books')
+        .get(`${API_URL}/books`)
         .then((response) => {
             setLoading(false);
             setBooks(response.data.data);
