@@ -60,7 +60,7 @@ VITE_BACKEND_URL=http://localhost:5555
 ### Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/sahil-beck/book-store.git
 cd bookStore
 ```
 
